@@ -58,8 +58,8 @@ impl DspFs {
     fn get_file_attr(&self) -> FileAttr {
         FileAttr {
             ino: 2,
-            size: self.metadata.size() * 2,
-            blocks: self.metadata.blocks() * 2,
+            size: 2 * self.metadata.size(),
+            blocks: self.metadata.blocks(),
             atime: make_system_time(self.metadata.atime(), self.metadata.atime_nsec()),
             mtime: make_system_time(self.metadata.mtime(), self.metadata.mtime_nsec()),
             ctime: make_system_time(self.metadata.ctime(), self.metadata.ctime_nsec()),
@@ -70,7 +70,7 @@ impl DspFs {
             uid: self.metadata.uid(),
             gid: self.metadata.gid(),
             rdev: self.metadata.rdev() as u32,
-            blksize: self.metadata.blksize() as u32,
+            blksize: 2 * self.metadata.blksize() as u32,
             padding: 0,
             flags: 0,
         }
